@@ -71,6 +71,19 @@
                           <li><a class="" href="404.html">404 Error</a></li>
                       </ul>
                   </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                          <span>Posts</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">                          
+                          <li><a class="" href="profile.html">All Posts</a></li>
+                          <li><a class="" href="login.html"><span>Add New</span></a></li>
+                          <li><a class="" href="blank.html">Categories</a></li>
+                      </ul>
+                  </li>
                   
               </ul>
               <!-- sidebar menu end-->
