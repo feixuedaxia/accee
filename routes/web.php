@@ -11,16 +11,51 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.home');
+Route::post('/test/test', function () {
+
+    return set_active('test/*');
 });
 
-Route::get('/dashboard', function(){
-	return view('admin.layout');
-})->middleware('auth');
+Route::get('/admin/test', function(){
+    return view('admin.test');
+});
+Route::post('/admin/test', 'AdminController@test');
+
+Route::resource('/api/category', 'ApiCategoryController');
+Route::resource('/api/calendar', 'ApiCalendarController');
+
+Route::resource('/api/post', 'ApiPostController');
+Route::get('/api/last-post', 'ApiPostController@lastpost');
+Route::get('/api/edit/{id}', 'ApiPostController@edit')->name('edit');
+
+Route::resource('/api/users', 'ApiUserController');
+Route::get('/user/edit/{id}', 'ApiUserController@edit')->name('useredit');
+
+
+//后端
+
+Route::get('/admin', 'AdminController@dashboard');
+Route::post('/admin/register', 'RegisterUserController@register');
+Route::get('/admin/register', 'RegisterUserController@showRegistrationForm');
+Route::get('/admin/calendar', 'AdminController@calendar');
+Route::get('/admin/calendar-add', 'AdminController@calendar_add');
+Route::get('/admin/users', 'UserController@index');
+Route::get('/admin/library', 'AdminController@library');
+Route::get('/admin/addmedia', 'AdminController@addmedia');
+Route::get('/admin/all-post', 'AdminController@post_all');
+Route::get('/admin/add', 'AdminController@add');
+Route::get('/admin/category', 'AdminController@category');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+//前端
+Route::get('/', function () {
+    return view('front.home');
+});
 
 Route::get('/posts', function () {
     return view('front.post.index');

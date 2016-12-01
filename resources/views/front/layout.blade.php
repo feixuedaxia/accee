@@ -55,7 +55,7 @@
     <script src="{{ URL::asset('js/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ URL::asset('js/jquery.nicescroll.js') }}"></script>
    
-    
+    @stack('scripts')
   </body>
 
   </html>

@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 
 use App\User;
+use App\Term;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+
+class RegisterUserController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -19,15 +24,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/register';
+  
 
     /**
      * Create a new controller instance.
@@ -36,7 +33,18 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest');
+        
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $categories = Term::pluck('name','id');
+        return view('admin.register',compact('categories'));
     }
 
     /**
@@ -67,5 +75,44 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+
+    public function register(Request $request)
+    {
+        // dd($request->input('categories'));
+
+        $this->validator($request->all())->validate();
+
+        $user = User::create($request->all());
+
+        $user->terms()->sync($request->input('categories'));
+
+        // event(new Registered($user = $this->create($request->all())));
+
+        
+
+        return redirect('/admin/users');
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
     }
 }

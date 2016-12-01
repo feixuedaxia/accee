@@ -4,60 +4,49 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
                   <li class="active">
-                      <a class="" href="index.html">
+                      <a class="" href="{{url('/admin')}}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Forms</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                          <li><a class="" href="form_validation.html">Form Validation</a></li>
-                      </ul>
-                  </li>       
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>UI Fitures</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="general.html">Elements</a></li>
-                          <li><a class="" href="buttons.html">Buttons</a></li>
-                          <li><a class="" href="grids.html">Grids</a></li>
-                      </ul>
-                  </li>
                   <li>
-                      <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
+                      <a class="" href="{{url('/admin/calendar')}}">
+                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                          <span>Calender</span>
                       </a>
                   </li>
-                  <li>                     
-                      <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-                          
+
+                  <li>
+                      <a class="" href="{{url('/admin/calendar-add')}}">
+                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                          <span>Calender-Add</span>
                       </a>
-                                         
-                  </li>
-                             
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="basic_table.html">Basic Table</a></li>
-                      </ul>
                   </li>
                   
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                          <span>Users</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">                          
+                          <li><a class="" href="{{url('/admin/users')}}">All Users</a></li>
+                          <li><a class="" href="{{url('/admin/register')}}"><span>Add User</span></a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="fa fa-camera" aria-hidden="true"></i></i>
+                          <span>Media</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">                          
+                          <li><a class="" href="{{url('/admin/library')}}">Library</a></li>
+                          <li><a class="" href="{{url('/admin/addmedia')}}"><span>Add New</span></a></li>
+                      </ul>
+                  </li>
+
+
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_documents_alt"></i>
@@ -79,9 +68,9 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">                          
-                          <li><a class="" href="profile.html">All Posts</a></li>
-                          <li><a class="" href="login.html"><span>Add New</span></a></li>
-                          <li><a class="" href="blank.html">Categories</a></li>
+                          <li><a class="" href="{{url('/admin/all-post')}}">All Posts</a></li>
+                          <li><a class="" href="{{url('/admin/add')}}"><span>Add New</span></a></li>
+                          <li><a class="" href="{{url('/admin/category')}}">Categories</a></li>
                       </ul>
                   </li>
                   

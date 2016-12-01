@@ -12,6 +12,7 @@ class Post extends Model
     protected $fillable=[
         'post_title',
         'post_content',
+        'post_name',
         'published_at',
         'post_author_id'//temporary
     ];
@@ -38,7 +39,12 @@ class Post extends Model
      */
     public function user(){
 
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','post_author_id');
+    }
+
+    public function terms()
+    {
+        return $this->belongsToMany('App\Term', 'term_post', 'post_id', 'term_id');
     }
 
     /**
